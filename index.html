@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa Claire | Private Resort & Rest House</title>
+    <!-- Google Fonts for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS RESET & VARIABLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary-blue: #1a365d;
+            --accent-gold: #c5a880;
+            --accent-gold-hover: #b3936a;
+            --text-dark: #2d3748;
+            --text-light: #f7fafc;
+            --bg-light: #fdfbf7; /* Soft sand white */
+            --bg-card: #ffffff;
+            --font-display: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        /* --- PLACEHOLDER STYLING --- */
+        .image-placeholder {
+            background-color: #e2e8f0;
+            border: 2px dashed #cbd5e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #718096;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            background-color: var(--primary-blue);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 2rem;
+        }
+        .logo {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text-light);
+            letter-spacing: 1px;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: var(--transition);
+            opacity: 0.85;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            opacity: 1;
+            color: var(--accent-gold);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            height: 80vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            overflow: hidden;
+        }
+        /* Background image placeholder container */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-color: #2a4365; /* Fallback */
+        }
+        /* Replace the background color rule below with your image path once ready: 
+           background-image: url('your-hero-image.jpg'); */
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5));
+            z-index: 2;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--accent-gold);
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+        .btn-primary:hover {
+            background-color: var(--accent-gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* --- WELCOME / ABOUT SECTION --- */
+        .about-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .about-section { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.5rem; }
+        }
+        .about-text h2 {
+            font-family: var(--font-display);
+            font-size: 2.75rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+        .about-text p {
+            color: #5a6578;
+            margin-bottom: 1.5rem;
+        }
+        .about-img-box {
+            height: 400px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* --- AMENITIES SECTION --- */
+        .amenities-section {
+            background-color: #f4f1ea; /* Very light sand tint */
+            padding: 6rem 2rem;
+        }
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem auto;
+        }
+        .section-header h2 {
+            font-family: var(--font-display);
+            font-size: 2.75rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+        .section-header .divider {
+            width: 60px;
+            height: 2px;
+            background-color: var(--accent-gold);
+            margin: 1rem auto;
+        }
+        .amenities-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+        .amenity-card {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+            transition: var(--transition);
+        }
+        .amenity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+        }
+        .amenity-img {
+            height: 220px;
+            width: 100%;
+        }
+        .amenity-info {
+            padding: 2rem;
+        }
+        .amenity-info h3 {
+            font-size: 1.25rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+        .amenity-info p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            padding: 4rem 2rem 2rem 2rem;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        @media (max-width: 768px) {
+            .footer-container { grid-template-columns: 1fr; gap: 2rem; }
+        }
+        .footer-brand h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+        .footer-brand p {
+            max-width: 400px;
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+        .footer-links h4 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.25rem;
+            color: var(--text-light);
+        }
+        .footer-links ul {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        .footer-links a {
+            color: var(--text-light);
+            opacity: 0.7;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent-gold);
+            padding-left: 4px;
+        }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">Villa Claire</div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Accommodations</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Reserve</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <!-- Image placeholder box for full hero banner background -->
+        <div class="hero-bg image-placeholder">
+            [ Hero Background Image Placeholder - 1920x1080 ]
+        </div>
+        <div class="hero-content">
+            <h1>Private Resort & Rest House</h1>
+            <p>Your exclusive luxury gateway nestled in serenity.</p>
+            <a href="#" class="btn-primary">Book Your Stay Now</a>
+        </div>
+    </section>
+
+    <!-- BRAND STORY / ABOUT SECTION -->
+    <section class="about-section">
+        <div class="about-text">
+            <h2>Welcome to Paradise</h2>
+            <p>Escape the rush of everyday life and immerse yourself in the private tranquility of Villa Claire. Thoughtfully designed to host family gatherings, weekend getaways, and intimate celebrations.</p>
+            <p>Experience complete premium exclusivity where comfort balances beautifully with nature.</p>
+        </div>
+        <!-- Image placeholder box for About Section -->
+        <div class="about-img-box image-placeholder">
+            [ Resort Overview Image - 600x400 ]
+        </div>
+    </section>
+
+    <!-- AMENITIES SECTION -->
+    <section class="amenities-section">
+        <div class="section-header">
+            <h2>Featured Amenities</h2>
+            <div class="divider"></div>
+            <p>Everything you need for an unforgettable and relaxing escape.</p>
+        </div>
+
+        <div class="amenities-grid">
+            <!-- Amenity Card 1 -->
+            <div class="amenity-card">
+                <!-- Image placeholder for Pool -->
+                <div class="amenity-img image-placeholder">
+                    [ Private Pool Image - 400x250 ]
+                </div>
+                <div class="amenity-info">
+                    <h3>Private Pool</h3>
+                    <p>Take a refreshing dip or lounge by the crystal clear waters of our completely private swimming pool.</p>
+                </div>
+            </div>
+
+            <!-- Amenity Card 2 -->
+            <div class="amenity-card">
+                <!-- Image placeholder for Karaoke -->
+                <div class="amenity-img image-placeholder">
+                    [ Entertainment Lounge Image - 400x250 ]
+                </div>
+                <div class="amenity-info">
+                    <h3>Premium Karaoke</h3>
+                    <p>Sing your heart out with friends and family using our high-definition acoustic karaoke sound setup.</p>
+                </div>
+            </div>
+
+            <!-- Amenity Card 3 -->
+            <div class="amenity-card">
+                <!-- Image placeholder for Wi-Fi/Lounge -->
+                <div class="amenity-img image-placeholder">
+                    [ Stay Connected Image - 400x250 ]
+                </div>
+                <div class="amenity-info">
+                    <h3>High-Speed Wi-Fi</h3>
+                    <p>Stay seamlessly connected or stream your favorite entertainment anywhere across the resort property.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>Villa Claire</h3>
+                <p>An exclusive private sanctuary designed for unforgettable relaxation, gatherings, and memory-making milestones.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Rates & Packages</a></li>
+                    <li><a href="#">House Rules</a></li>
+                    <li><a href="#">Contact & Location</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Villa Claire. All rights reserved.</p>
+            <p>Designed for Ultimate Comfort</p>
+        </div>
+    </footer>
+
+</body>
+</html>

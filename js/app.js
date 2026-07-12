@@ -1,0 +1,1 @@
+console.log('Villa Claire frontend loaded');
